@@ -1,0 +1,32 @@
+package main
+
+import (
+	"context"
+	"flag"
+
+	"github.com/google/subcommands"
+)
+
+type baz struct{}
+
+func (*baz) Name() string {
+	return "baz"
+}
+
+func (*baz) Synopsis() string {
+	return "lorem ipsum dolor"
+}
+
+func (*baz) Usage() string {
+	return `usage: baz [flags]
+
+wopr baz -q=42`
+}
+
+func (b *baz) SetFlags(f *flag.FlagSet) {}
+
+func (b *baz) Execute(ctx context.Context, fs *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
+	// TODO(alice)
+
+	return subcommands.ExitUsageError
+}
