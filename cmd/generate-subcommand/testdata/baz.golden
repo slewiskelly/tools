@@ -7,24 +7,32 @@ import (
 	"github.com/google/subcommands"
 )
 
+// baz implements the "baz" subcommand.
+//
+// It satisifes the subcommands.Command interface.
 type baz struct{}
 
+// Name returns the name of the subcommand.
 func (*baz) Name() string {
 	return "baz"
 }
 
+// Synopsis returns a one-line summary of the subcommand.
 func (*baz) Synopsis() string {
 	return "lorem ipsum dolor"
 }
 
+// Usage returns a longer explanation and/or usage example(s) of the subcommand.
 func (*baz) Usage() string {
 	return `usage: baz [flags]
 
 wopr baz -q=42`
 }
 
+// SetFlags sets the flags specific to the subcommand.
 func (b *baz) SetFlags(f *flag.FlagSet) {}
 
+// Execute executes the subcommand.
 func (b *baz) Execute(ctx context.Context, fs *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
 	// TODO(alice)
 

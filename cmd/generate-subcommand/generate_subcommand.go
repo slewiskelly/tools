@@ -190,22 +190,30 @@ import (
 	"github.com/google/subcommands"
 )
 
+// {{ .Cmd }} implements the "{{ .Cmd | Lower }}" subcommand.
+//
+// It satisifes the subcommands.Command interface.
 type {{ .Cmd }} struct{}
 
+// Name returns the name of the subcommand.
 func (*{{ .Cmd }}) Name() string {
 	return "{{ .Cmd | Lower }}"
 }
 
+// Synopsis returns a one-line summary of the subcommand.
 func (*{{ .Cmd }}) Synopsis() string {
 	return "{{ .Synopsis }}"
 }
 
+// Usage returns a longer explanation and/or usage example(s) of the subcommand.
 func (*{{ .Cmd }}) Usage() string {
 	return ` + "`{{ .Usage }}`" + `
 }
 
+// SetFlags sets the flags specific to the subcommand.
 func ({{ .Cmd | Lower | First }} *{{ .Cmd }}) SetFlags(f *flag.FlagSet) {}
 
+// Execute executes the subcommand.
 func ({{ .Cmd | Lower | First }} *{{ .Cmd }}) Execute(ctx context.Context, fs *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
 	// TODO({{ .User }})
 

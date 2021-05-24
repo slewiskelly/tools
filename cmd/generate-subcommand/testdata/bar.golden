@@ -7,24 +7,32 @@ import (
 	"github.com/google/subcommands"
 )
 
+// Bar implements the "bar" subcommand.
+//
+// It satisifes the subcommands.Command interface.
 type Bar struct{}
 
+// Name returns the name of the subcommand.
 func (*Bar) Name() string {
 	return "bar"
 }
 
+// Synopsis returns a one-line summary of the subcommand.
 func (*Bar) Synopsis() string {
 	return "sit amet, consectetur"
 }
 
+// Usage returns a longer explanation and/or usage example(s) of the subcommand.
 func (*Bar) Usage() string {
 	return `usage: bar [flags]
 
 wopr bar -x`
 }
 
+// SetFlags sets the flags specific to the subcommand.
 func (b *Bar) SetFlags(f *flag.FlagSet) {}
 
+// Execute executes the subcommand.
 func (b *Bar) Execute(ctx context.Context, fs *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
 	// TODO(bob)
 
